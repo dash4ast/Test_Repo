@@ -22,8 +22,8 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         echo "Running semgrep and dumping results to JSON file"
-        semgrep ci --json --output report-ssc.json || true
-        json_file=report-ssc.json
+        semgrep ci --json --output report.json || true
+        json_file=report.json
         echo "Iterating through findings"
         findings=$(jq -r '.results[]' "$json_file")
         for k in $(jq '.results | keys | .[]' "$json_file"); do
